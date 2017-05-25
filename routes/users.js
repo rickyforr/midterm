@@ -20,8 +20,8 @@ module.exports = (knex) => {
   return router;
 }
 
-
 /*
+
   router.post("/", (req, res) => {
     // Update user profile info
     if (req.user.name == req.body.name && req.user.email == req.body.email) {
@@ -68,5 +68,5 @@ module.exports = (knex) => {
 
   });
 
-*/
 
+*/
