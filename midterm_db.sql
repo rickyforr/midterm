@@ -5,14 +5,14 @@ USE midterm;
 
 --USERS table--
 CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   username VARCHAR(255) UNIQUE NOT NULL,
   created_at TIMESTAMP DEFAULT NOW()
 );
 
 --RESOURCES table--
 CREATE TABLE resources (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     resource_url VARCHAR(255) NOT NULL,
     user_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE resources (
 
 --COMMENTS table--
 CREATE TABLE comments (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     comment_text VARCHAR(255) NOT NULL,
     resource_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE ratings (
 
 --TAGS table--
 CREATE TABLE tags (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   tag_name VARCHAR(255) UNIQUE,
   created_at TIMESTAMP DEFAULT NOW()
 );
