@@ -43,10 +43,17 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// users page
+app.get("/users.id", (req, res) => {
+  res.render("user_page");
+});
+
+// register
+app.get("/register", (req, res) => {
+  res.render("register");
+})
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-app.get("/users.id", (req, res) => {
-  res.render("user_page");
-})
