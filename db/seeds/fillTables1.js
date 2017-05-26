@@ -1,3 +1,6 @@
+
+
+
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('comments').del()
@@ -86,3 +89,5 @@ exports.seed = function(knex, Promise) {
       ]);
     });
 };
+
+
