@@ -53,6 +53,12 @@ app.get("/users.id", (req, res) => {
   res.render("user_page");
 });
 
+// edit user
+app.get("/users.id/edit", (req, res) => {
+  res.render("edit_profile")
+})
+
+// resource page
 app.get("/resource", (req, res) => {
   res.render("resource");
 })

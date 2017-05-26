@@ -32,7 +32,7 @@
 
         <li><a href="/users.id">User</a></li>
         <li><a href="/resource">Resource</a></li>
-        <li><a href="/uesrs_id/edit">Edit Profile</a></li>
+        <li><a href="/users.id/edit">Edit Profile</a></li>
         <li><a href='/'>Logout</a></li>
       </ul>
       </div>
@@ -50,14 +50,17 @@
 
     <div class='container text-center'>
     <div class="row">
-      <h3>Time to Learn</h3>
-      <p>learn and add learning tutorials</p>
+      <h3>Add a new Learing Tutorial</h3>
         <section class='col-sm-4'>
         </section>
           <section class="col-sm-4" action='/#' style='border: 3px solid #404040'>
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <button type='submit'><a href="/users.id">Login</a></button>
+            <div><label><b>URL</b></label>
+            <input type="text" placeholder="Enter URL" name="url" required></div>
+            <div><label><b>Title</b></label>
+            <input type="text" placeholder="Enter a Title" name="title" required></div>
+            <div><label><b>Description</b></label>
+            <input type="text" placeholder="Enter a Description" name="dscript" required></div>
+            <button type='submit'>Submit</a></button>
           </section>
         </div>
     </div>
