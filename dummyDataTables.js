@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
         // Inserts users seed entries
         knex('users').insert({id: 1, name: 'Alice', email: 'resourcewall@yahoo.com', password: '123'}),
         knex('users').insert({id: 2, name: 'Bob', email: 'misterveale@gmail.com', password: '123'}),
-        knex('users').insert({id: 3, name: 'Charlie', email: 'resourcewall@gmail.com', password: '123'})
+        knex('users').insert({id: 3, name: 'Charlie', email: 'resourcewall@gmail.com', password: '123'}),
         knex('users').insert({id: 4, name: 'Dan', email: 'dan@gmail.com', password: '123'})
       ])
     }).then(function () {
@@ -28,7 +28,7 @@ exports.seed = function(knex, Promise) {
         knex('resources').insert({id: 3, user_id: 1, url: 'http://mashable.com/', title: 'mashable  wtf - whats dis4',
           description: 'Mashable is the go-to source for tech, digital culture and entertainment content for its dedicated and influential audience around the globe.',
           likes_count: 0, avg_rating: 5, comments_count: 1,
-          media_src: "http://www.labsoflatvia.com/content/posts/post-image-562f7c1b4e4807.77084819.png"})
+          media_src: "http://www.labsoflatvia.com/content/posts/post-image-562f7c1b4e4807.77084819.png"}),
         knex('resources').insert({id: 4, user_id: 2, url: 'https://www.ultimate-guitar.com/', title: 'Ultimate Guitar Tabs',
           description: 'Large amount of guitar tabs posted by users and ranked based on popularity. Great for learning those songs you know and love.',
           likes_count: 0, avg_rating: 5, comments_count: 1,
@@ -80,7 +80,7 @@ exports.seed = function(knex, Promise) {
         knex('comments').insert({id: 1, resource_id: 3, user_id: 1, text: 'Awesome!!'}),
         knex('comments').insert({id: 2, resource_id: 1, user_id: 2, text: 'The book was a better teacher and had a better personality.'}),
         knex('comments').insert({id: 3, resource_id: 2, user_id: 3, text: 'It\'s okay.'}),
-        knex('comments').insert({id: 4, resource_id: 1, user_id: 3, text: 'So good, the best.'})
+        knex('comments').insert({id: 4, resource_id: 1, user_id: 3, text: 'So good, the best.'}),
         knex('comments').insert({id: 5, resource_id: 4, user_id: 4, text: 'Learned stairway to heaven! Now everyone loves me at parties.'})
 
       ]);
