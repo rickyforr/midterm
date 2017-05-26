@@ -20,18 +20,18 @@ exports.seed = function(knex, Promise) {
         // Inserts resources seed entries
         knex('resources').insert({id: 1, user_id: 1, url: 'www.lighthouselabs.ca', title: 'We make developers!',
           description: 'Lighthouse Labs in 2013 by a group of software developers with a passion for code, mentorship, and education. They offer various courses and learning materials for anyone interested in advancing their coding knowledge.',
-          likes_count: 2, avg_rating: 3, media_src: "https://lighthouselabs.ca/assets/lighthouselabs-logo-d5df6d383f7466b06a64de9561fd537493502eafe78bbf3bcd3de82884e5dd85.png"}),
+          likes_count: 2, avg_rating: 3, comments_count: 2, media_src: "https://lighthouselabs.ca/assets/lighthouselabs-logo-d5df6d383f7466b06a64de9561fd537493502eafe78bbf3bcd3de82884e5dd85.png"}),
         knex('resources').insert({id: 2, user_id: 3, url: 'www.yahoo.com', title: 'Yahoo!',
           description: 'The word yahoo is a backronym for Yet Another Hierarchically Organized Oracle or Yet Another Hierarchical Officious Oracle. It\'s like google.',
-          likes_count: 2, avg_rating: 3,
+          likes_count: 2, avg_rating: 3, comments_count: 1,
           media_src: "https://vignette2.wikia.nocookie.net/logopedia/images/3/35/Yahoo_Logo.png/revision/latest?cb=20101130020430"}),
         knex('resources').insert({id: 3, user_id: 1, url: 'http://mashable.com/', title: 'mashable  wtf - whats dis4',
           description: 'Mashable is the go-to source for tech, digital culture and entertainment content for its dedicated and influential audience around the globe.',
-          likes_count: 0, avg_rating: 5,
+          likes_count: 0, avg_rating: 5, comments_count: 1,
           media_src: "http://www.labsoflatvia.com/content/posts/post-image-562f7c1b4e4807.77084819.png"}),
         knex('resources').insert({id: 4, user_id: 2, url: 'https://www.ultimate-guitar.com/', title: 'Ultimate Guitar Tabs',
           description: 'Large amount of guitar tabs posted by users and ranked based on popularity. Great for learning those songs you know and love.',
-          likes_count: 0, avg_rating: 5,
+          likes_count: 0, avg_rating: 5, comments_count: 1,
           media_src: "https://images-na.ssl-images-amazon.com/images/I/51%2BDbYWvE9L.png"})
       ])
     }).then(function () {

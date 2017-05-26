@@ -40,7 +40,10 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+   let user = knex('user').select(1)
+
+  res.render("index", user);
+
 });
 
 // register
