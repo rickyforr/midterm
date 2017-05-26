@@ -56,11 +56,16 @@ app.get("/users.id", (req, res) => {
 // edit user
 app.get("/users.id/edit", (req, res) => {
   res.render("edit_profile")
-})
+});
 
 // resource page
 app.get("/resource", (req, res) => {
   res.render("resource");
+});
+
+// individual resource page
+app.get("/resource/id", (req,res) => {
+  res.render("resource_id")
 })
 
 app.listen(PORT, () => {
