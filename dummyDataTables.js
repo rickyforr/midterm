@@ -37,17 +37,17 @@ exports.seed = function(knex, Promise) {
     }).then(function () {
       return Promise.all([
         // Inserts categories seed entries
-        knex('categories').insert({id: 1, name: 'Art'}),
-        knex('categories').insert({id: 2, name: 'Biology'}),
-        knex('categories').insert({id: 3, name: 'Geography'}),
-        knex('categories').insert({id: 4, name: 'Business'}),
-        knex('categories').insert({id: 5, name: 'Music'}),
-        knex('categories').insert({id: 6, name: 'Tech'}),
-        knex('categories').insert({id: 7, name: 'Food'}),
-        knex('categories').insert({id: 8, name: 'Philosophy'}),
-        knex('categories').insert({id: 9, name: 'Engineering'}),
-        knex('categories').insert({id: 10, name: 'Photography'}),
-        knex('categories').insert({id: 11, name: 'Other'})
+        knex('tags').insert({id: 1, name: 'Art'}),
+        knex('tags').insert({id: 2, name: 'Biology'}),
+        knex('tags').insert({id: 3, name: 'Geography'}),
+        knex('tags').insert({id: 4, name: 'Business'}),
+        knex('tags').insert({id: 5, name: 'Music'}),
+        knex('tags').insert({id: 6, name: 'Tech'}),
+        knex('tags').insert({id: 7, name: 'Food'}),
+        knex('tags').insert({id: 8, name: 'Philosophy'}),
+        knex('tags').insert({id: 9, name: 'Engineering'}),
+        knex('tags').insert({id: 10, name: 'Photography'}),
+        knex('tags').insert({id: 11, name: 'Other'})
 
       ])
     }).then(function () {
@@ -69,10 +69,10 @@ exports.seed = function(knex, Promise) {
     }).then(function () {
       return Promise.all([
         // Inserts resource_categories seed entries
-        knex('resource_categories').insert({resource_id: 3, category_id: 6}),
-        knex('resource_categories').insert({resource_id: 1, category_id: 6}),
-        knex('resource_categories').insert({resource_id: 2, category_id: 11}),
-        knex('resource_categories').insert({resource_id: 1, category_id: 3})
+        knex('resource_categories').insert({resource_id: 3, tag_id: 6}),
+        knex('resource_categories').insert({resource_id: 1, tag_id: 6}),
+        knex('resource_categories').insert({resource_id: 2, tag_id: 11}),
+        knex('resource_categories').insert({resource_id: 1, tag_id: 3})
       ])
     }).then(function () {
       return Promise.all([
