@@ -9,21 +9,20 @@ exports.seed = function(knex, Promise) {
     .then(function () { return knex('likes').del() })
     .then(function () { return knex('tags').del() })
     .then(function () { return knex('resources').del() })
-    .then(function () { return knex('users').del() })
+    .then(function () { console.log('deleting users:'); return knex('users').del() })
     .then(function () {
       return Promise.all([
-        // Inserts users seed entries
-        knex('users').insert({id: 1, name: 'Alice', email: 'resourcewall@yahoo.com', password: '123'}),
-        knex('users').insert({id: 2, name: 'Bob', email: 'misterveale@gmail.com', password: '123'}),
-        knex('users').insert({id: 3, name: 'Charlie', email: 'resourcewall@gmail.com', password: '123'}),
-        knex('users').insert({id: 4, name: 'Dan', email: 'dan@gmail.com', password: '123'})
+         Inserts users seed entries
+         knex('users').insert({id: 1, name: 'Alice', email: 'resourcewall@yahoo.com', password: '123'}),
+         knex('users').insert({id: 2, name: 'Bob', email: 'misterveale@gmail.com', password: '456'}),
+         knex('users').insert({id: 3, name: 'Charlie', email: 'resourcewall@gmail.com', password: '789'}),
+         knex('users').insert({id: 4, name: 'Dan', email: 'dan@gmail.com', password: '012'})
       ])
     }).then(function () {
       return Promise.all([
         // Inserts resources seed entries
         knex('resources').insert({id: 1, user_id: 1, resource_url: 'www.lighthouselabs.ca', title: 'We make developers!',
-          description: 'Lighthouse Labs in 2013 by a group of software developers with a passion for code, mentorship, and education. They offer various courses and
-          learning materials for anyone interested in advancing their coding knowledge.',
+          description: 'Lighthouse Labs in 2013 by a group of software developers with a passion for code, mentorship, and education. They offer various courses and learning materials for anyone interested in advancing their coding knowledge.',
           likes_count: 2, avg_rating: 3 }),
         knex('resources').insert({id: 2, user_id: 3, resource_url: 'www.yahoo.com', title: 'Yahoo!',
           description: 'The word yahoo is a backronym for Yet Another Hierarchically Organized Oracle or Yet Another Hierarchical Officious Oracle. It\'s like google.',
@@ -80,11 +79,11 @@ exports.seed = function(knex, Promise) {
     }).then(function () {
       return Promise.all([
         // Inserts comments seed entries
-        knex('comments').insert({id: 1, resource_id: 3, user_id: 1, text: 'Awesome!!'}),
-        knex('comments').insert({id: 2, resource_id: 1, user_id: 2, text: 'The book was a better teacher and had a better personality.'}),
-        knex('comments').insert({id: 3, resource_id: 2, user_id: 3, text: 'It\'s okay.'}),
-        knex('comments').insert({id: 4, resource_id: 1, user_id: 3, text: 'So good, the best.'}),
-        knex('comments').insert({id: 5, resource_id: 4, user_id: 4, text: 'Learned stairway to heaven! Now everyone loves me at parties.'})
+        knex('comments').insert({id: 1, resource_id: 3, user_id: 1, c_text: 'Awesome!!'}),
+        knex('comments').insert({id: 2, resource_id: 1, user_id: 2, c_text: 'The book was a better teacher and had a better personality.'}),
+        knex('comments').insert({id: 3, resource_id: 2, user_id: 3, c_text: 'It\'s okay.'}),
+        knex('comments').insert({id: 4, resource_id: 1, user_id: 3, c_text: 'So good, the best.'}),
+        knex('comments').insert({id: 5, resource_id: 4, user_id: 4, c_text: 'Learned stairway to heaven! Now everyone loves me at parties.'})
 
       ]);
     });

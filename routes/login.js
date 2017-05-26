@@ -17,17 +17,13 @@ module.exports = function (knex) {
     db(knex).getUserByEmail(email, function(user) {
 
       if (user) {
-
         if(req.body.password === user.password) {
           console.log("success");
           //req.session.user = user;
-
           console.log("failed");
 //          res.status(200).redirect("/api/users");
           res.status(200).redirect("/api/resources");
-
         } else {
-
             req.session.error_message = 'Email and/or password is incorrect.  Please try again.';
             res.status(401).redirect('/');
             return;
