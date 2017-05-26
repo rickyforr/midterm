@@ -43,14 +43,18 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// register
+app.get("/register", (req, res) => {
+  res.render("register");
+})
+
 // users page
 app.get("/users.id", (req, res) => {
   res.render("user_page");
 });
 
-// register
-app.get("/register", (req, res) => {
-  res.render("register");
+app.get("/resource", (req, res) => {
+  res.render("resource");
 })
 
 app.listen(PORT, () => {
