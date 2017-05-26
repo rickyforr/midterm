@@ -52,12 +52,12 @@ app.get("/register", (req, res) => {
 })
 
 // users page
-app.get("/users.id", (req, res) => {
+app.get("/user_id", (req, res) => {
   res.render("user_page");
 });
 
 // edit user
-app.get("/users.id/edit", (req, res) => {
+app.get("/user_id/edit", (req, res) => {
   res.render("edit_profile")
 });
 
