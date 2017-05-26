@@ -39,26 +39,35 @@
     </nav>
 
     <style type="text/css">
-        div{
-            margin-bottom: 10px;
+        .container{
+            margin-bottom: 20px;
         }
         #comment{
             border-left: 2px solid grey;
             border-bottom: 2px solid grey;
             background-color: white;
+            margin-bottom: 10px;
         }
         .comment{
             padding-top: 10px;
+
         }
     </style>
 
 
-    <div class="container">
-        <div class="row justify-content-end">
+    <div class="container" style="background-color: #a8a8a8;">
+        <div class="row">
             <span>
-                <div class="star s-0.5" data-default="0.5">0.5 stars</div>
+                <div>
+                    <div class="star s-0.5 col-sm-2" data-default="0.5">0.5 stars</div>
+                    <h2 class="col" style="text-align: center;">Tiles of the Resource</h2>
+                </div>
                 <iframe class="col-sm-12"  width="420" height="345" src="https://www.w3schools.com/bootstrap/bootstrap_buttons.asp"></iframe>
-                <button class="btn btn-info">Like</button>
+                <div>
+                    <button class="btn btn-info col-sm-1">Like</button>
+                    <h6 class="col-sm-6" style="text-align: center;">a very long and indept description of what this tutorial is all about</h6>
+                </div>
+
             </span>
         </div>
     </div>
