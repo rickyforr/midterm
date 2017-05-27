@@ -23,7 +23,7 @@ const db = require('./db/queries')(knex);
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const resourceRoutes = require("./routes/new_resource");
-
+const registrationRoutes = require("./routes/registration");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -55,6 +55,8 @@ app.use("/login", loginRoutes(knex));
 
 app.use("/new_resource", resourceRoutes(knex));
 
+
+app.use("/register", registrationRoutes(knex));
 
 // put the rest of the app's resource routes here,
 // even if long and ugly like this one:
