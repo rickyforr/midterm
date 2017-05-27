@@ -105,19 +105,22 @@ app.use("/Users/userprofile", (req, res) => {
     });
 });
 
+// app.get("/", (req, res) => {
 
+//   res.render("index");
 
+// });
 
 
 // Home page
 app.get("/", (req, res) => {
 
-  res.render("index");
+  res.render("resource_id");
 //  following stuff is new.  don't know if it'll work.
 
 
 
-      console.log('req.templateVars', req.templateVars);
+      // console.log('req.templateVars', req.templateVars);
 
 //  if (req.session.error_message) {
 
