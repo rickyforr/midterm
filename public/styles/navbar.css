@@ -1,5 +1,5 @@
-body {
-  background-color: #e8e8e8;
+body{
+  background-color: #787878;
   font-family: 'Libre Franklin', sans-serif;
   font-weight: bold;
 }
@@ -7,10 +7,11 @@ body {
 section.col-sm-4 {
   border: 3px solid #404040;
 }
+div
 
-span.col-sm-12 col-md-6 {
+span.col-sm-12 .col-md-6 {
             margin: 10px 10px;
-            background-color: #383838;
+            background-color: #47d1d1;
             max-width: 550px;
             padding-bottom: 5px;
 }
