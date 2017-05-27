@@ -42,3 +42,27 @@ span {
   border-radius: 20px;
 }
 
+/* resource id page */
+
+.container{
+    margin-bottom: 20px;
+}
+#comment{
+    border-left: 2px solid grey;
+    border-bottom: 2px solid grey;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.comment{
+    padding-top: 10px;
+
+}
+
+
+
+
+
+
+
+
+
