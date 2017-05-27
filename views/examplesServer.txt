@@ -1,0 +1,130 @@
+Marsupials Server: server.js
+
+
+// Login //
+
+
+
+
+
+// Search marsupials//
+
+app.get('/marsupials', (req, res) => {
+  res.render('marsupials_index', {
+    marsupials: marsupials
+  });
+});
+
+
+
+
+
+// Create a marsupial//
+app.post('/marsupials', (req, res) => {
+  console.log(req.body);
+  marsupials.push(req.body);
+  // Bad - never render in a post, ever, don't do it please, please
+  // res.render('marsupials_index', {
+  //   marsupials: marsupials
+  // });
+
+  // Good - always redirect from posts
+  res.redirect('/marsupials');
+});
+
+
+
+
+
+// Retrieve a marsupial//
+app.get('/marsupials/:name', (req, res) => {
+  const marsupial = marsupials.find(m => m.name === req.params.name);
+  if (!marsupial) {
+    res.status(404);
+    res.send('Marsupial not found');
+    return;
+  }
+  res.render('marsupials_show', {
+    marsupial: marsupial
+  });
+});
+
+
+
+// Replace a marsupial
+app.post('/marsupials/:name', (req, res) => {
+  const marsupial = marsupials.find(m => m.name === req.params.name);
+  if (!marsupial) {
+    res.status(404);
+    res.send('Marsupial not found');
+    return;
+  }
+  marsupial.name = req.body.name;
+  marsupial.size = req.body.size;
+  res.redirect(`/marsupials/${marsupial.name}`)
+});
+
+
+
+
+// Destroy a marsupial //
+app.post('/marsupials/:name/delete', (req, res) => {
+  const marsupialIndex = marsupials.findIndex(m => m.name === req.params.name);
+  marsupials.splice(marsupialIndex, 1);
+  res.redirect('/marsupials');
+});
+
+app.listen(8080, () => {
+  console.log('it\'s listening');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+
+    <h2>Login</h2>
+
+
+
+
+
+ <a class="clo" href="#">×</a>
+    <div class="log">
+      <form action="/login/" method="POST" role="login">
+        <label for="login"></label>
+        <input type="email" name="email" placeholder="you@example.com"/>
+        <input type="password" name="password" placeholder="Password"/>
+        <button id="Go"type="submit">Go!</button>
+      </form>
+  </div>
+
+
+
+
+
+
+  </body>
+</html>
