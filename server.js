@@ -26,6 +26,7 @@ const db = require('./db/queries')(knex);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
+const resourceRoutes = require("./routes/new_resource");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -49,47 +50,53 @@ app.use(express.static("public"));
 // MOUNT ALL RESOURCE ROUTES HERE //
 app.use("/api/users", usersRoutes(knex));
 
+// route for login  //
+app.use("/login", loginRoutes(knex));
+
+
+app.use("/new_resource", resourceRoutes(knex));
+
+
+
+
 
 // put the rest of the app's resource routes here,
 // even if long and ugly like this one:
 
 
 //displays resources page (stable)//
-app.use("/api/resources", (req, res) => {
-    knex
-      .select("*")
-      .from("resources")
-      .then((results) => {
-        res.render('resources',{resources:results});
-    });
-});
+// app.use("/resources", (req, res) => {
+//     knex
+//       .select("*")
+//       .from("resources")
+//       .then((results) => {
+//         res.render('resources',{resources:results});
+//     });
+// });
 
 
 
 // displays results page //
-app.use("/api/allUsers", (req, res) => {
+app.use("/users", (req, res) => {
     knex
       .select("*")
       .from("users")
-      .then((allUsers) => {
-        res.render('allUsers',{users:allUsers});
+      .then((users) => {
+        res.render('users',{users:users});
     });
 });
 
-
-// displays login routes //
-app.use("/api/login", loginRoutes(knex));
 
 
 
 
 // displays USER page //
-app.use("/api/user", (req, res) => {
+app.use("/Users/userprofile", (req, res) => {
     knex
       .select("*")
-      .from("user")
-      .then((user) => {
-        res.render('user',{user:user});
+      .from("users")
+      .then((userprofile) => {
+        res.render('user',{user:userprofile});
     });
 });
 

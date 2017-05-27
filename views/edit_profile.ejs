@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>User Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -20,46 +20,44 @@
   </head>
 
   <body>
+
     <nav class='navbar navbar-inverse'>
     <div class='container-fluid'>
       <div class='navbar-header'>
         <a class='navbar-brand' href='/#'>Learntrist</a>
       </div>
       <ul class='nav navbar-nav navbar-right' >
-        <li><a href='/register'>Register</a></li>
+
+        <li>
+            <input type="text" class="form-control search-bar" placeholder="Search...">
+        </li>
+        <li>
+            <button type ="submit" class="btn btn-default search-bar">Submit</button>
+        </li>
+
+        <li><a href="/users.id">User</a></li>
+        <li><a href="/resource">Resource</a></li>
+        <li><a href="/users.id/edit">Edit Profile</a></li>
+        <li><a href='/'>Logout</a></li>
       </ul>
       </div>
     </nav>
 
-    <div class='container text-center'>
+
+
+
+<div class='container text-center'>
     <div class="row">
-      <h3>Time to Learn</h3>
-      <p>learn and add learning tutorials</p>
-
-
-
-    <!--this is the Login Section -->
-          <form action="/login" method="POST" role="login">
-    <!--this is the Login Section -->
-
-
+      <h3>Edit your User</h3>
           <section class="col-sm-center-block" action='/#' style='border: 3px solid #404040'>
-            <div><label for="login"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="email" required></div>
-            <div><label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required></div>
-            <button type='submit'>Login</button>
+            <div><label><b>New Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required></div>
+            <div><label><b>New Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pword" required></div>
+            <button type='submit'><a href="/users.id">Change</a></button>
           </section>
         </div>
     </div>
-  </body>
-</html>
-
-
-
-
-
-
 
 
 

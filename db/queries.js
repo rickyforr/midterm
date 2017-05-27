@@ -185,7 +185,7 @@ module.exports = (knex) => {
       .returning('id')
       .insert({
         user_id:        resource.user_id,
-        url:            resource.url,
+        resource_url:   resource.url,
         title:          resource.title,
         description:    resource.description,
         likes_count:    resource.likes_count,
