@@ -22,6 +22,9 @@ const db = require('./db/queries')(knex);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
+const resourceRoutes = require("./routes/new_resource");
+
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -50,6 +53,7 @@ app.use("/login", loginRoutes(knex));
 
 
 
+app.use("/new_resource", resourceRoutes(knex));
 
 
 // put the rest of the app's resource routes here,
@@ -57,6 +61,15 @@ app.use("/login", loginRoutes(knex));
 
 
 //displays resources page (stable)//
+// app.use("/resources", (req, res) => {
+//     knex
+//       .select("*")
+//       .from("resources")
+//       .then((results) => {
+//         res.render('resources',{resources:results});
+//     });
+// });
+
 app.use("/resources", (req, res) => {
     knex
       .select("*")
