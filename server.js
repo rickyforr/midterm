@@ -15,10 +15,6 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 
-
-
-
-
 // Knex Querrying powers of wonder //
 const db = require('./db/queries')(knex);
 
