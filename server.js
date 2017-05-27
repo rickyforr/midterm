@@ -15,10 +15,6 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 
-
-
-
-
 // Knex Querrying powers of wonder //
 const db = require('./db/queries')(knex);
 
@@ -27,6 +23,8 @@ const db = require('./db/queries')(knex);
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const resourceRoutes = require("./routes/new_resource");
+
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -54,10 +52,8 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/login", loginRoutes(knex));
 
 
+
 app.use("/new_resource", resourceRoutes(knex));
-
-
-
 
 
 // put the rest of the app's resource routes here,
@@ -73,6 +69,15 @@ app.use("/new_resource", resourceRoutes(knex));
 //         res.render('resources',{resources:results});
 //     });
 // });
+
+app.use("/resources", (req, res) => {
+    knex
+      .select("*")
+      .from("resources")
+      .then((results) => {
+        res.render('resources',{resources:results});
+    });
+});
 
 
 

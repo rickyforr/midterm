@@ -7,6 +7,9 @@ const db      = require('../db/queries.js');
 
 
 module.exports = (knex) => {
+//  This need to be uncommented when queries.js is done:
+//  const db = require('../db/queries.js')(knex);
+
 
 
 
