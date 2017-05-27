@@ -4,13 +4,12 @@ const db = require('../db/queries.js');
 
 const express = require('express');
 const router  = express.Router();
-const bcrypt  = require('bcrypt');
-
+//const bcrypt  = require('bcrypt');
 
 
 module.exports = function (knex) {
 
-  //This is the Login//
+  //This is the Login Logic//
 
   router.post("/", (req, res) => {
 
@@ -19,14 +18,7 @@ module.exports = function (knex) {
 
       if (user) {
         if(req.body.password === user.password) {
-          console.log("success");
-          //req.session.user = user;
-          console.log("failed");
-
-
-//          res.status(200).redirect("/api/users");
- db(knex).getResourcesByUser(user.id, function(resourcesFromDB) {
-
+          db(knex).getResourcesByUser(user.id, function(resourcesFromDB) {
           res.status(200).render("resource", {resources: resourcesFromDB });
         });
         } else {
@@ -35,7 +27,7 @@ module.exports = function (knex) {
             return;
         }
       } else {
-       // req.session.error_message = 'Email and/or password is incorrect.  Please try again.';
+        req.session.error_message = 'Email and/or password is incorrect.  Please try again.';
         res.status(401).redirect('/');
         return;
       }
