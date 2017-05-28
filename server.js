@@ -24,6 +24,7 @@ const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const resourceRoutes = require("./routes/new_resource");
 const registrationRoutes = require("./routes/registration");
+const commentRoutes = require("./routes/new_comment");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -51,12 +52,11 @@ app.use("/api/users", usersRoutes(knex));
 // route for login  //
 app.use("/login", loginRoutes(knex));
 
-
-
 app.use("/new_resource", resourceRoutes(knex));
 
-
 app.use("/register", registrationRoutes(knex));
+
+app.use("/resource_id", commentRoutes(knex));
 
 // put the rest of the app's resource routes here,
 // even if long and ugly like this one:
@@ -81,8 +81,6 @@ app.use("/resources", (req, res) => {
     });
 });
 
-
-
 // displays results page //
 app.use("/users", (req, res) => {
     knex
@@ -92,9 +90,6 @@ app.use("/users", (req, res) => {
         res.render('users',{users:users});
     });
 });
-
-
-
 
 
 // displays USER page //
@@ -107,8 +102,17 @@ app.use("/Users/userprofile", (req, res) => {
     });
 });
 
+//displays registration page
+app.get("/register", (req, res) => {
 
+  res.render("register");
+  });
 
+//displays single resource page
+app.get("/resource_id", (req, res) => {
+
+  res.render("resource_id");
+  });
 
 
 // Home page

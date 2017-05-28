@@ -25,18 +25,13 @@ module.exports = function (knex) {
 
     db(knex).saveUser(user, function(user) {
 
-
-
-  //          res.status(200).redirect("/api/users");
-   db(knex).getResourcesByUser(user.id, function(resourcesFromDB) {
-
-            res.status(200).render("resource");
+    res.status(200).render("user_page");
           });
 
 
     })
 
-  })
+
 
   return router;
 
