@@ -72,50 +72,21 @@
     </div>
 </form>
 
-    <div id="comment" class="container">
+
+  <% for(var i=0; i<comments.length; i++) {%>
+
+
+                  <div id="comment" class="container">
         <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
+            <label class="form-control-label" for="commentuser"><%= comments[i].commenter %></label>
+            <h6 class="text-muted time"><%= comments[i].created_at %></h6>
+            <p class="comment"><%= comments[i].text %></p>
         </div>
     </div>
 
+ <% } %>
 
-<div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
+
 
 
 

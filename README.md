@@ -1,9 +1,8 @@
 
-########### THE LEARNING WALL ########### 
+## THE LEARNING WALL ##
 
 ## PROJECT REQUIREMENTS ##
 
---don't change any css or front end stuff--
 
   • users should be able to save an external URL along with a title and description
       (resource.ejs, new_resource.js)
@@ -36,16 +35,16 @@
 
 
 
-##### DATABASE TABLES #####
+# DATABASE TABLES #
 
 
-# USERS #
+### USERS ###
 id (PK), 
 name, 
 email, 
 password
 
-# RESOURCES #
+### RESOURCES ###
 id (PK), 
 user_id (FK), 
 resource_url, 
@@ -55,31 +54,29 @@ description,
 avg_rating, 
 likes_count
 
-# RESOURCE TAGS #
+### RESOURCE TAGS ###
 resource_id (PK, FK), 
 tag_id (PK, FK)
 
-# TAGS #
+### TAGS ###
 id (PK), 
 tag_name
 
-# COMMENTS #
+### COMMENTS ###
 id (PK), 
 resource_id (FK), 
 user_id (FK), 
 c_text, 
 created_at
 
-# RATINGS #
+### RATINGS ###
 user_id (PK), 
 resource_id (PK), 
 value
 
-# LIKES #
+### LIKES ###
 user_id (PK), 
 resource_id (PK)
-
-
 
 
 

@@ -222,8 +222,7 @@ module.exports = (knex) => {
         returnedObj.text = comment.text;
       })
       .then(() => {
-        return knex('resources').where('id', comment.resource_id)
-            .increment('comments_count', 1).returning('comments_count');
+        return [1];
       })
       .then((count) => {
         callback([returnedObj, count[0]]);

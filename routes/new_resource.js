@@ -53,9 +53,16 @@ module.exports = function (knex) {
 
     router.get("/comment", (req, res) => {
 
-      req.session.resourceId = req.body.resourceId;
 
-     res.status(200).render("resource_comment");
+      req.session.resourceId = req.query.resourceId;
+
+       db(knex).getComments([req.session.resourceId,req.session.userId], function(result) {
+
+          res.status(200).render("resource_comment", {comments: result.comments });
+        });
+
+
+
   })
 
 
