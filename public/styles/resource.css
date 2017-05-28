@@ -89,7 +89,18 @@ span {
   margin-top: 0;
 }
 
-
+h3 {
+  color: #47d1d1;
+  border-width: 2px;
+  padding: 0px;
+  color: grey;
+  margin: auto;
+  border-radius: 20px;
+}
+h3:hover {
+  background-color: #47d1d1;
+  color: white;
+  }
 
 
 
