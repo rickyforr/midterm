@@ -16,6 +16,10 @@ span {
   border: 2px solid #33cccc;
   border-radius: 20px
 }
+.user-field h3{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .login-field{
  background-image: url("blue_wall.png");
