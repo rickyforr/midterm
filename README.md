@@ -34,43 +34,43 @@
 
 
 # USERS #
-id (PK)
-name
-email
+id (PK), 
+name, 
+email, 
 password
 
 # RESOURCES #
-id (PK)
-user_id (FK)
-resource_url
-created_at
-title
-description
-avg_rating
+id (PK), 
+user_id (FK), 
+resource_url, 
+created_at, 
+title, 
+description, 
+avg_rating, 
 likes_count
 
 # RESOURCE TAGS #
-resource_id (PK, FK)
+resource_id (PK, FK), 
 tag_id (PK, FK)
 
 # TAGS #
-id (PK)
+id (PK), 
 tag_name
 
 # COMMENTS #
-id (PK)
-resource_id (FK)
-user_id (FK)
-c_text
+id (PK), 
+resource_id (FK), 
+user_id (FK), 
+c_text, 
 created_at
 
 # RATINGS #
-user_id (PK)
-resource_id (PK)
+user_id (PK), 
+resource_id (PK), 
 value
 
 # LIKES #
-user_id (PK)
+user_id (PK), 
 resource_id (PK)
 
 
