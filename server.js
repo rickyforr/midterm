@@ -13,6 +13,8 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const session    = require("express-session");
+app.use(session({secret : 'mysecretword'}));
 
 
 // Knex Querrying powers of wonder //
@@ -25,6 +27,7 @@ const loginRoutes = require("./routes/login");
 const resourceRoutes = require("./routes/new_resource");
 const registrationRoutes = require("./routes/registration");
 const userProfileRoutes = require("./routes/userprofile");
+const commentRoutes = require("./routes/comments");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -53,6 +56,8 @@ app.use("/login", loginRoutes(knex));
 app.use("/new_resource", resourceRoutes(knex));
 
 app.use("/register", registrationRoutes(knex));
+
+app.use("/comment", commentRoutes(knex));
 
 
 

@@ -30,6 +30,12 @@
        (register.ejs, registration.js)   (index.ejs, login.js, almost every page has logout)    (edit_profile.ejs, )
 
 
+
+
+
+
+
+
 ##### DATABASE TABLES #####
 
 

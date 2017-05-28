@@ -19,20 +19,50 @@ module.exports = function (knex) {
         resource.desc = req.body.dscript;
 
         //hardcoded for debugging reasons
-        resource.user_id = 3;
+        resource.user_id = req.session.userId;
 
     db(knex).saveResource(resource, function() {
 
 
-       db(knex).getResourcesByUser(3, function(resourcesFromDB) {
+       db(knex).getResourcesByUser(req.session.userId, function(resourcesFromDB) {
 
-          res.status(200).render("resource", {resources: resourcesFromDB });
+          res.status(200).render("user_page", {resources: resourcesFromDB });
         });
 
 
     })
 
   })
+
+
+
+  router.post("/search", (req, res) => {
+    var resource  = {};
+        resource.search = req.body.key;
+
+
+
+
+       db(knex).getResourcesBySearch(resource, function(resourcesFromDB) {
+
+          res.status(200).render("user_page", {resources: resourcesFromDB });
+        });
+
+
+  })
+
+    router.get("/comment", (req, res) => {
+
+      req.session.resourceId = req.body.resourceId;
+
+     res.status(200).render("resource_comment");
+  })
+
+
+
+
+
+
 
   return router;
 }

@@ -48,7 +48,7 @@ module.exports = (knex) => {
 
       let tagIDs = data.tagIDs;
       let searchTerm = data.search;
-      console.log('tagIDs', categoryIDs);
+      console.log('tagIDs', tagIDs);
       const approximateTerm = `%${searchTerm}%`.toLowerCase(); // searches description for a match
 
       //may need to recheck the pluralization with: tags //
@@ -179,6 +179,7 @@ module.exports = (knex) => {
     saveResource: (resource, callback) => {
       resource.likes_count = 0;
       resource.avg_rating = 0;
+      resource.tags =[];
       knex
       .returning('id')
       .insert({
@@ -211,7 +212,7 @@ module.exports = (knex) => {
       .insert({
         user_id:        comment.user_id,
         resource_id:    comment.resource_id,
-        text:           comment.text
+        c_text:           comment.text
       }).into('comments')
       .then((returnedArr) => {
         returnedObj.id = returnedArr[0].id;
@@ -238,7 +239,7 @@ module.exports = (knex) => {
     // updateUser lets a User update their profile //
     updateUser: (userObj, callback) => {
       const thisId = userObj.id;
-      userObj.id = undefined;
+      //userObj.id = undefined;
       console.log('thisId', thisId);
       knex('users').where('id', thisId).update(userObj)
       .then(function(isUpdated) {
