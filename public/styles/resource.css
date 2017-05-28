@@ -15,7 +15,21 @@ span {
   background-color: #47d1d1;
   border: 2px solid #33cccc;
   border-radius: 20px
+}
 
+.login-field{
+ background-image: url("blue_wall.png");
+ background-size: 1200px;
+ font-family: 'Libre Franklin', sans-serif;
+  font-weight: bold;
+  border: 2px solid #33cccc;
+  border-radius: 20px
+}
+
+
+.login-field h3{
+  font-size: 50px;
+  color: white;
 }
 
 
@@ -25,7 +39,7 @@ span {
   border-radius: 5px;
   border: 2px solid #7a7a7a;
   background-color: #7f7f7f;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .edit{
@@ -42,14 +56,22 @@ span {
   border-radius: 20px;
 }
 
+
 /* resource id page */
+.resource_id{
+  background-color: #47d1d1 ;
+}
+.resource_id h2{
+  font-size: 35px;
+}
 
 .container{
     margin-bottom: 20px;
 }
 #comment{
-    border-left: 2px solid grey;
-    border-bottom: 2px solid grey;
+    border-left: 3.5px solid #47d1d1;
+    border-bottom: 3.5px solid #47d1d1;
+    border-radius: 20px;
     background-color: white;
     margin-bottom: 10px;
 }
@@ -58,9 +80,14 @@ span {
 
 }
 
+#comment label{
+  font-size: 25px;
+  margin-bottom: 0;
+}
 
-
-
+#comment h6{
+  margin-top: 0;
+}
 
 
 

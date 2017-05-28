@@ -45,7 +45,8 @@
 
 
 
-    <div class=" Resource resource_id container">
+
+    <div class="resource_id container">
         <div class="row">
             <span>
                 <div class="container-fluid">
@@ -54,67 +55,37 @@
                 </div>
                 <iframe class="col-sm-12"  width="420" height="345" src="https://www.youtube.com/embed/ZQLhOXlGnRE"></iframe>
                 <div>
-                    <button class="btn btn-info col-sm-1">Like</button>
                     <h6 class="col-sm-11" style="text-align: center;">a very long and indept description of what this tutorial is all about</h6>
                 </div>
 
             </span>
         </div>
     </div>
-
-    <div class="container">
+  <form action="/comment/addcomment" method="POST">
+    <div class="user-field container text-center">
         <div class="form-group">
-            <label class="form-control-label" for="comment">Comment</label>
-            <input class="form-control" type="text" placeholder="Add a Comment">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <label class="label-edit form-control-label" for="comment">Comment</label>
+            <input class="edit" form-control" type="text"  name="comment" placeholder="Add a Comment">
+            <button class="edit-button" type="submit">Submit</button>
         </div>
     </div>
-
-
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
+</form>
 
 
-<div id="comment" class="container">
+  <% for(var i=0; i<comments.length; i++) {%>
+
+
+                  <div id="comment" class="container">
         <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
+            <label class="form-control-label" for="commentuser"><%= comments[i].commenter %></label>
+            <h6 class="text-muted time"><%= comments[i].created_at %></h6>
+            <p class="comment"><%= comments[i].text %></p>
         </div>
     </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
-    <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser">User_id</label>
-            <h6 class="text-muted time">1 minute ago</h6>
-            <p class="comment">THE COMMENTS (asjhakjsdhkahsdkajhsd)</p>
-        </div>
-    </div>
+
+ <% } %>
+
+
 
 
 

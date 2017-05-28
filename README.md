@@ -1,4 +1,10 @@
-# Node Skeleton
+
+## THE LEARNING WALL ##
+
+
+
+
+
 
 ## Project Setup
 
@@ -27,3 +33,53 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+
+
+## Creating, Migrating and Seeding the Initial Database ##
+
+
+
+
+
+# DATABASE TABLES #
+
+### USERS ###
+id (PK), <br />
+name, <br />
+email, <br />
+password<br />
+
+### RESOURCES ###
+id (PK), <br />
+user_id (FK), <br />
+resource_url, <br />
+created_at, <br />
+title, <br />
+description, <br />
+avg_rating, <br />
+likes_count<br />
+
+### RESOURCE TAGS ###
+resource_id (PK, FK), <br />
+tag_id (PK, FK)<br />
+
+### TAGS ###
+id (PK), <br />
+tag_name<br />
+
+### COMMENTS ###
+id (PK), <br />
+resource_id (FK),<br /> 
+user_id (FK), <br />
+c_text, <br />
+created_at<br />
+
+### RATINGS ###
+user_id (PK), <br />
+resource_id (PK), <br />
+value<br />
+
+### LIKES ###
+user_id (PK), <br />
+resource_id (PK)<br />
+

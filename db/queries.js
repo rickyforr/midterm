@@ -48,7 +48,7 @@ module.exports = (knex) => {
 
       let tagIDs = data.tagIDs;
       let searchTerm = data.search;
-      console.log('tagIDs', categoryIDs);
+      console.log('tagIDs', tagIDs);
       const approximateTerm = `%${searchTerm}%`.toLowerCase(); // searches description for a match
 
       //may need to recheck the pluralization with: tags //
@@ -177,10 +177,9 @@ module.exports = (knex) => {
 
     // saveResource saves a new resource for a user //
     saveResource: (resource, callback) => {
-      //this could be resources.likes_count and resources.avg_rating
       resource.likes_count = 0;
       resource.avg_rating = 0;
-//      resource.comments_count = 0;
+      resource.tags =[];
       knex
       .returning('id')
       .insert({
@@ -190,7 +189,6 @@ module.exports = (knex) => {
         description:    resource.description,
         likes_count:    resource.likes_count,
         avg_rating:     resource.avg_rating,
-//        comments_count: resource.comments_count
       }).into('resources')
       .then((idArr) => {
         resource.id = idArr[0];
@@ -214,8 +212,7 @@ module.exports = (knex) => {
       .insert({
         user_id:        comment.user_id,
         resource_id:    comment.resource_id,
-      // was originally comment.text
-        text:           comment.c_text
+        c_text:           comment.text
       }).into('comments')
       .then((returnedArr) => {
         returnedObj.id = returnedArr[0].id;
@@ -225,8 +222,7 @@ module.exports = (knex) => {
         returnedObj.text = comment.text;
       })
       .then(() => {
-        return knex('resources').where('id', comment.resource_id)
-            .increment('comments_count', 1).returning('comments_count');
+        return [1];
       })
       .then((count) => {
         callback([returnedObj, count[0]]);
@@ -237,12 +233,12 @@ module.exports = (knex) => {
     },
 
 
-    // Updating Section: User, Likes, Ratings //
+    // UPDATING SECTION: USER, LIKES, RATINGS //
 
     // updateUser lets a User update their profile //
     updateUser: (userObj, callback) => {
       const thisId = userObj.id;
-      userObj.id = undefined;
+      //userObj.id = undefined;
       console.log('thisId', thisId);
       knex('users').where('id', thisId).update(userObj)
       .then(function(isUpdated) {
@@ -251,74 +247,74 @@ module.exports = (knex) => {
           callback(userObj);
         }
       });
-    }
+    },
 
 
-// WE'LL DEAL WITH THIS WHEN THE OTHER STUFF IS SORTED//
+   //the update likes and ratings is causing an error upon npm run local
 
-    // updates likes: if user hasn't liked it before, it will increment, otherwise it will decrement and remove the like //
-    // updateLikes: (likeObj, callback) => {
-    //   knex
-    //   .select('*')
-    //   .from('likes')
-    //   .where('likes.user_id', '=', likeObj.user_id)
-    //   .andWhere('likes.resource_id', '=', likeObj.resource_id)
-    //   .then((likeArr) => {
-    //     if (likeArr.length < 1) {
-    //       return knex.insert(likeObj).into('likes')
-    //       .then(() => {
-    //         return knex('resources').where('id', likeObj.resource_id)
-    //         .increment('likes_count', 1).returning('likes_count');
-    //       });
-    //     } else {
-    //       return knex('likes').where('user_id', likeObj.user_id)
-    //         .andWhere('likes.resource_id', '=', likeObj.resource_id).del()
-    //       .then(() => {
-    //         return knex('resources').where('id', likeObj.resource_id)
-    //         .decrement('likes_count', 1).returning('likes_count');
-    //       });
-    //     }
-    //   }).then((newCountArr) => {
-    //     callback(newCountArr[0]);
-    //   });
-    // },
+  //  updates likes: if user hasn't liked it before, it will increment, otherwise it will decrement and remove the like //
+    updateLikes: (likeObj, callback) => {
+      knex
+      .select('*')
+      .from('likes')
+      .where('likes.user_id', '=', likeObj.user_id)
+      .andWhere('likes.resource_id', '=', likeObj.resource_id)
+      .then((likeArr) => {
+        if (likeArr.length < 1) {
+          return knex.insert(likeObj).into('likes')
+          .then(() => {
+            return knex('resources').where('id', likeObj.resource_id)
+            .increment('likes_count', 1).returning('likes_count');
+          });
+        } else {
+          return knex('likes').where('user_id', likeObj.user_id)
+            .andWhere('likes.resource_id', '=', likeObj.resource_id).del()
+          .then(() => {
+            return knex('resources').where('id', likeObj.resource_id)
+            .decrement('likes_count', 1).returning('likes_count');
+          });
+        }
+      }).then((newCountArr) => {
+        callback(newCountArr[0]);
+      });
+    },
 
 
-    // updates rating: if user hasn't rated it before, it will increment, otherwise it will decrement and remove the rating //
-    // updateRating: (ratingObj, callback) => {
-    //   knex
-    //   .select('*')
-    //   .from('ratings')
-    //   .where('ratings.user_id', '=', ratingObj.user_id)
-    //   .andWhere('ratings.resource_id', '=', ratingObj.resource_id)
-    //   .then((ratingArr) => {
-    //     if (ratingArr.length < 1) {
-    //       return knex.insert(ratingObj).into('ratings').then(() => {
-    //       return knex('ratings').avg('value as avgRating').where('resource_id', ratingObj.resource_id)
-    //         .returning('avgRating'); })
-    //       .then((avgRatingArr) => {
-    //         const rating = Math.round(Number(avgRatingArr[0].avgRating));
-    //         return knex('resources').where('id', ratingObj.resource_id)
-    //         .update('avg_rating', rating).returning('avg_rating');
-    //       }).then((newMeanArr) => {
-    //         callback(newMeanArr[0]);
-    //       });
-    //     } else {
-    //       return knex('ratings').where('user_id', ratingObj.user_id)
-    //         .andWhere('ratings.resource_id', '=', ratingObj.resource_id).update('value', ratingObj.value)
-    //       .then(() => {
-    //       return knex('ratings').avg('value as avgRating').where('resource_id', ratingObj.resource_id)
-    //         .returning('avgRating'); })
-    //       .then((avgRatingArr) => {
-    //         const rating = Math.round(Number(avgRatingArr[0].avgRating));
-    //         return knex('resources').where('id', ratingObj.resource_id)
-    //         .update('avg_rating', rating).returning('avg_rating');
-    //       }).then((newMeanArr) => {
-    //         callback(newMeanArr[0]);
-    //       });
-    //     }
-    //   })
-    // },
+  // //  updates rating: if user hasn't rated it before, it will increment, otherwise it will decrement and remove the rating //
+    updateRating: (ratingObj, callback) => {
+      knex
+      .select('*')
+      .from('ratings')
+      .where('ratings.user_id', '=', ratingObj.user_id)
+      .andWhere('ratings.resource_id', '=', ratingObj.resource_id)
+      .then((ratingArr) => {
+        if (ratingArr.length < 1) {
+          return knex.insert(ratingObj).into('ratings').then(() => {
+          return knex('ratings').avg('value as avgRating').where('resource_id', ratingObj.resource_id)
+            .returning('avgRating'); })
+          .then((avgRatingArr) => {
+            const rating = Math.round(Number(avgRatingArr[0].avgRating));
+            return knex('resources').where('id', ratingObj.resource_id)
+            .update('avg_rating', rating).returning('avg_rating');
+          }).then((newMeanArr) => {
+            callback(newMeanArr[0]);
+          });
+        } else {
+          return knex('ratings').where('user_id', ratingObj.user_id)
+            .andWhere('ratings.resource_id', '=', ratingObj.resource_id).update('value', ratingObj.value)
+          .then(() => {
+          return knex('ratings').avg('value as avgRating').where('resource_id', ratingObj.resource_id)
+            .returning('avgRating'); })
+          .then((avgRatingArr) => {
+            const rating = Math.round(Number(avgRatingArr[0].avgRating));
+            return knex('resources').where('id', ratingObj.resource_id)
+            .update('avg_rating', rating).returning('avg_rating');
+          }).then((newMeanArr) => {
+            callback(newMeanArr[0]);
+          });
+        }
+      })
+    },
 
    // end of queries.js //
   };

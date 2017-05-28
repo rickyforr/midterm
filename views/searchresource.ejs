@@ -25,11 +25,11 @@
     <div class='container-fluid'>
       <div class='navbar-header'>
         <a class='navbar-brand' href='/#'></a>
-      </div><form method="POST" action="/new_resource/search" >
+      </div>
       <ul class='nav navbar-nav navbar-right' >
-
+<form method="POST" action="/search">
         <li>
-            <input type="text" class="form-control search-bar"  name="key"placeholder="Search...">
+            <input type="text" class="form-control search-bar"  name placeholder="Search...">
         </li>
         <li>
             <button type ="submit" class="btn btn-default search-bar">Submit</button>
@@ -37,7 +37,7 @@
 </form>
         <li><a href="/user_id">User</a></li>
         <li><a href="/resource">Resource</a></li>
-        <li><a href="/login/edit">Edit Profile</a></li>
+        <li><a href="/user_id/edit">Edit Profile</a></li>
         <li><a href='/'>Logout</a></li>
       </ul>
       </div>
@@ -49,7 +49,7 @@
 
     <div class='user-field container text-center'>
     <div class="row">
-      <form method= "POST" action='../new_resource'>
+      <form method= "POST" action='/new_resource'>
       <h3>Add a New Learning Tutorial</h3>
           <section class="col-sm-center-block" action='/#' >
             <div>
@@ -71,11 +71,14 @@
               <label class="label-edit" for="tutorialtype" >Categories</label>
               <select class="edit form-control">
                 <option>Choose</option>
-                <option value="CSS">Category1</option>
-                <option value="JQuery">Category2</option>
-                <option value="Bootstrap">Category3</option>
-                <option value="HTML">Category4</option>
-                <option value="Other">Category5</option>
+                <option value="CSS">Arts</option>
+                <option value="JQuery">Business</option>
+                <option value="Bootstrap">Cooking</option>
+                <option value="HTML">Coding</option>
+                <option value="Other">Dance</option>
+                <option value="Other">Swordfighting</option>
+                <option value="Other">You Don't Wanna Know</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
@@ -84,7 +87,7 @@
         </div>
     </div>
 
-</form>
+
 
 
     <div class='container'>
@@ -95,15 +98,10 @@
 
 
                   <span class=" col-sm-12 col-md-6">
-                            <div class="star s-0.5" data-default="0.5" style="color: white;"><%= resources[i].title  %> <span> 0.5 stars</span></div>
+                            <div class="star s-0.5" data-default="0.5" style="color: white;">From DB<%= resources[i].title  %> 0.5 stars</div>
                             <iframe class="col-sm-12"  width="420" height="345" src="<%= resources[i].resource_url  %>" ></iframe>
- <form action="../comment/like" method="post">
-                            <button  type="submit" class="btn btn-outline-primary">Like (<%= resources[i].likes_count  %>) </button>
-                            <input type="hidden"  name="resourcesId" value="<%= resources[i].id  %>" >
-</form>
-                            <button class="btn btn-info"><a href="/new_resource//comment?resourceId=<%= resources[i].id%>">Comments</a></button>
-
-
+                            <button class="btn btn-outline-primary">Like</button>
+                            <button class="btn btn-info"><a href="/resource/id">Comments</a></button>
                         </span>
             <% } %>
 
