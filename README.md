@@ -1,4 +1,83 @@
-# Node Skeleton
+
+########### THE LEARNING WALL ########### 
+
+## PROJECT REQUIREMENTS ##
+
+--don't change any css or front end stuff--
+
+  • users should be able to save an external URL along with a title and description
+      (resource.ejs, new_resource.js)
+
+  • users should be able to categorize any resource under a topic
+      (resource.ejs, new_resource.js)
+
+  • users should be able to search for already-saved resources created by any user
+      (in every ejs page, don't have a .js file for this yet)
+
+  • users should be able to comment on any resource
+       (user_page.ejs, resource_id.js)
+
+  • users should be able to rate any resource
+       (user_page.ejs, resource_id.js)
+
+  • users should be able to like any resource
+       (user_page.ejs, resource_id.js)     
+
+  • users should be able to view all their own and all liked resources on one page ("My resources")
+       (user_page.ejs)
+
+  • users should be able to register, log in, log out and update their profile
+       (register.ejs, registration.js)   (index.ejs, login.js, almost every page has logout)    (edit_profile.ejs, )
+
+
+##### DATABASE TABLES #####
+
+
+# USERS #
+id (PK)
+name
+email
+password
+
+# RESOURCES #
+id (PK)
+user_id (FK)
+resource_url
+created_at
+title
+description
+avg_rating
+likes_count
+
+# RESOURCE TAGS #
+resource_id (PK, FK)
+tag_id (PK, FK)
+
+# TAGS #
+id (PK)
+tag_name
+
+# COMMENTS #
+id (PK)
+resource_id (FK)
+user_id (FK)
+c_text
+created_at
+
+# RATINGS #
+user_id (PK)
+resource_id (PK)
+value
+
+# LIKES #
+user_id (PK)
+resource_id (PK)
+
+
+
+
+
+
 
 ## Project Setup
 
@@ -27,3 +106,4 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+

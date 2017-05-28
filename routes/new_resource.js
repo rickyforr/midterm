@@ -17,7 +17,8 @@ module.exports = function (knex) {
         resource.url = req.body.url;
         resource.title = req.body.title;
         resource.desc = req.body.dscript;
-        //hardcoded for experimental reasons
+
+        //hardcoded for debugging reasons
         resource.user_id = 3;
 
     db(knex).saveResource(resource, function() {

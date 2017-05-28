@@ -19,7 +19,7 @@ module.exports = function (knex) {
       if (user) {
         if(req.body.password === user.password) {
           db(knex).getResourcesByUser(user.id, function(resourcesFromDB) {
-          res.status(200).render("resource", {resources: resourcesFromDB });
+          res.status(200).render("user_page", {resources: resourcesFromDB });
         });
         } else {
             req.session.error_message = 'Email and/or password is incorrect.  Please try again.';
