@@ -29,11 +29,9 @@ module.exports = function (knex) {
           res.status(200).render("user_page", {resources: resourcesFromDB });
         });
 
-
     })
 
   })
-
 
 
   router.post("/search", (req, res) => {
@@ -41,13 +39,10 @@ module.exports = function (knex) {
         resource.search = req.body.key;
 
 
-
-
        db(knex).getResourcesBySearch(resource, function(resourcesFromDB) {
 
           res.status(200).render("user_page", {resources: resourcesFromDB });
         });
-
 
   })
 
@@ -61,14 +56,7 @@ module.exports = function (knex) {
           res.status(200).render("resource_comment", {comments: result.comments });
         });
 
-
-
   })
-
-
-
-
-
 
 
   return router;

@@ -15,7 +15,21 @@ span {
   background-color: #47d1d1;
   border: 2px solid #33cccc;
   border-radius: 20px
+}
 
+.login-field{
+ background-image: url("blue_wall.png");
+ background-size: 1200px;
+ font-family: 'Libre Franklin', sans-serif;
+  font-weight: bold;
+  border: 2px solid #33cccc;
+  border-radius: 20px
+}
+
+
+.login-field h3{
+  font-size: 50px;
+  color: white;
 }
 
 
@@ -46,6 +60,9 @@ span {
 /* resource id page */
 .resource_id{
   background-color: #47d1d1 ;
+}
+.resource_id h2{
+  font-size: 35px;
 }
 
 .container{
