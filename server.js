@@ -56,7 +56,8 @@ app.use("/new_resource", resourceRoutes(knex));
 
 app.use("/register", registrationRoutes(knex));
 
-app.use("/resource_id", commentRoutes(knex));
+app.use("/api/comment", commentRoutes(knex));
+
 
 // put the rest of the app's resource routes here,
 // even if long and ugly like this one:
@@ -119,6 +120,7 @@ app.get("/resource_id", (req, res) => {
 app.get("/", (req, res) => {
 
   res.render("index");
+
 //  following stuff is new.  don't know if it'll work.
 
 

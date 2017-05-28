@@ -1,28 +1,23 @@
 $(() => {
-  const newComment = "This is an awesome resource"
+  const newComment = $('input.form-control').text()
 
     $('.make-comment').on('click', function (event) {
+      event.preventDefault();
+          $.ajax({
+      method: "POST",
+      url: "/api/comment",
+      data: $("form").serialize()
 
-         $.ajax({
+    })
 
-            method: 'POST',
-            url: '/resource_id',
-            data: $('form').serialize(),
+            $.ajax({
+      method: "GET",
+      url: "/api/comment"
 
-          }).done(function(data) {
-         newComment = data;
-         $(`<div id="comment" class="container">
-        <div class="form-group">
-        <label class="form-control-label" for="commentuser">User_id</label>
-        <h6 class="text-muted time">1 minute ago</h6>
-        <p class="comment">${newComment}</p>
-         </div>
-         </div>`).prependTo($('.comments'));
-         });
+    }).done( (data) => {
 
+         $('<div>').text(data).appendTo($('.container'));
+     })
+  })
+})
 
-      //prepend new comment to comments <div>
-
-
-  });
-});

@@ -4,34 +4,30 @@ const db = require('../db/queries.js');
 
 const express = require('express');
 const router  = express.Router();
-//const bcrypt  = require('bcrypt');
+
 
 
 
 module.exports = function (knex) {
 
-  //This is for New Resources logic //
+  //This is for New Comments logic //
 
-  router.post("/resource_", (req, res) => {
-    var resource  = {};
-        resource.url = req.body.url;
-        resource.title = req.body.title;
-        resource.desc = req.body.dscript;
-        //hardcoded for experimental reasons
-        resource.user_id = 3;
+  router.post("/", (req, res) => {
 
-    db(knex).saveResource(resource, function() {
+     let comment = {}
+      comment.user_id = '5'
+      comment.resource_id = '1'
+      comment.c_text = req.body.comment
 
+    db(knex).saveComment(comment, function(comment) {
 
-       db(knex).getResourcesByUser(3, function(resourcesFromDB) {
+    res.redirect("/resource_id");
 
-          res.status(200)
-        });
+          });
 
 
-    })
+})
 
-  })
 
   return router;
 }

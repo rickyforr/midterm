@@ -215,10 +215,10 @@ module.exports = (knex) => {
         user_id:        comment.user_id,
         resource_id:    comment.resource_id,
       // was originally comment.text
-        text:           comment.c_text
+        c_text:           comment.c_text
       }).into('comments')
       .then((returnedArr) => {
-        returnedObj.id = returnedArr[0].id;
+        returnedObj.id = 10;
         returnedObj.created_at = returnedArr[0].created_at
         returnedObj.commenter_id = comment.user_id;
         returnedObj.resource_id = comment.resource_id;
@@ -226,7 +226,7 @@ module.exports = (knex) => {
       })
       .then(() => {
         return knex('resources').where('id', comment.resource_id)
-            .increment('comments_count', 1).returning('comments_count');
+
       })
       .then((count) => {
         callback([returnedObj, count[0]]);
