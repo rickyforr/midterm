@@ -1,5 +1,6 @@
 body{
   background-color: #787878;
+  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/63/b8/46/63b8466b1a1d5454eca87ea871daefa5.jpg');
   font-family: 'Libre Franklin', sans-serif;
 }
 
@@ -38,4 +39,21 @@ span.col-sm-12 .col-md-6 {
 
 .navbar {
   height: 80px;
+}
+
+
+
+@media (max-width: 800px) {
+  .navbar{
+    height:400px;
+    width: 100%;
+    position: relative ;
+  }
+  .search-bar {
+    width: 80%;
+    margin: auto;
+  }
+  .btn.btn-default.search-bar{
+    width: 80%;
+    margin-left: 40px;
 }
