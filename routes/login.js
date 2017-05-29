@@ -12,12 +12,13 @@ module.exports = function (knex) {
   //This is the Login Logic//
 
   router.post("/", (req, res) => {
-
+console.log('should log me in')
     const email = req.body.email;
     db(knex).getUserByEmail(email, function(user) {
 
       if (user) {
         if(req.body.password === user.password) {
+
            req.session.userId = user.id;
           db(knex).getResourcesByUser(user.id, function(resourcesFromDB) {
           res.status(200).render("user_page", {resources: resourcesFromDB });

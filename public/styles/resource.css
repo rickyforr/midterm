@@ -89,7 +89,7 @@ span {
   margin-top: 0;
 }
 
-h3.new-resource {
+h3.new_resource; {
   color: #47d1d1;
   border-width: 2px;
   padding: 0px;
@@ -98,7 +98,7 @@ h3.new-resource {
   border-radius: 20px;
 }
 
-h3.new-resource:hover {
+h3.new_resource:hover {
   background-color: #47d1d1;
   color: white;
   }

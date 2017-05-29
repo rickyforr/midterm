@@ -57,7 +57,7 @@ app.use("/new_resource", resourceRoutes(knex));
 
 app.use("/register", registrationRoutes(knex));
 
-app.use("/comment", commentRoutes(knex));
+//app.use("/comment", commentRoutes(knex));
 
 
 
@@ -70,6 +70,15 @@ app.get("/", (req, res) => {
 
 });
 
+app.get("/resource_id", (req, res) => {
+ knex
+      .select("*")
+      .from("comments")
+      .then((comments) => {
+
+  res.render("resource_comment.ejs", {comments: comments});
+    });
+});
 
 
 
@@ -84,7 +93,14 @@ app.use("/resources", (req, res) => {
     });
 });
 
-
+app.use("/comments_table", (req, res) => {
+    knex
+      .select("*")
+      .from("comments")
+      .then((results) => {
+        res.json(results);
+    });
+});
 
 
 

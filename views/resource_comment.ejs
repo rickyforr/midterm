@@ -15,7 +15,7 @@
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/comments_ajax.js"></script>
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   </head>
 
@@ -61,7 +61,7 @@
             </span>
         </div>
     </div>
-  <form action="/comment/addcomment" method="POST">
+  <form >
     <div class="user-field container text-center">
         <div class="form-group">
             <label class="label-edit form-control-label" for="comment">Comment</label>
@@ -69,21 +69,12 @@
             <button class="edit-button" type="submit">Submit</button>
         </div>
     </div>
+    <div class='comments'>
+    </div>
 </form>
 
 
-  <% for(var i=0; i<comments.length; i++) {%>
 
-
-                  <div id="comment" class="container">
-        <div class="form-group">
-            <label class="form-control-label" for="commentuser"><%= comments[i].commenter %></label>
-            <h6 class="text-muted time"><%= comments[i].created_at %></h6>
-            <p class="comment"><%= comments[i].text %></p>
-        </div>
-    </div>
-
- <% } %>
 
 
 

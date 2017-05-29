@@ -95,7 +95,7 @@
 
 
                   <span class=" col-sm-12 col-md-6">
-                            <div class="star s-0.5" data-default="0.5" style="color: white;"><%= resources[i].title  %> <span> 0.5 stars</span></div>
+                            <div class="star s-0.5" data-default="0.5" style="color: white;"><%= resources[i].title  %> <span><%= resources[i].avg_rating %></span></div>
                             <iframe class="col-sm-12"  width="420" height="345" src="<%= resources[i].resource_url  %>" ></iframe>
  <form action="../comment/like" method="post">
                             <button  type="submit" class="btn btn-outline-primary">Like (<%= resources[i].likes_count  %>) </button>
